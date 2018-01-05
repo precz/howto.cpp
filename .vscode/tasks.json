@@ -27,6 +27,46 @@
             ],
             "dependsOn": [
                 "PrepareBuildDir"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            }
+        },
+        {
+            "taskName": "BuildTests",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-g",
+                "test.cpp",
+                "-lboost_unit_test_framework",
+                "-o",
+                "bin/test.out"
+            ],
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "dependsOn": [
+                "PrepareBuildDir"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            }
+        },
+        {
+            "taskName": "RunTests",
+            "type": "shell",
+            "command": "bin/test.out",
+            "dependsOn": [
+                "BuildTests"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "problemMatcher": [
             ]
         }
     ]
